@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Interactive Calendar Scheduler + React Performance Lab
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single React project combining the two academic experiments:
 
-## Available Scripts
+1. **Interactive Calendar for Scheduling and Managing Posts** — CO3 / BT3
+2. **Rendering Performance Optimization and Testing** — CO4 / BT4, CO5 / BT5
 
-In the project directory, you can run:
+The interface is intentionally modeled after the supplied reference image while expanding it into a complete scheduling application.
 
-### `npm start`
+## Included functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Week, day and month calendar views
+- Drag-and-drop events between dates/time slots
+- Resize events by dragging the bottom edge
+- Double-click an empty week slot to create a post
+- Create, edit and delete scheduled posts
+- Date navigation, Today button and view switcher
+- Meeting / Deadline / Focus block / Personal filters
+- Live clock toggle that updates every 450ms
+- React.memo toggle for event cards
+- useCallback toggle for interaction handlers
+- useMemo toggle for the filtered agenda calculation
+- Render Monitor with per-card counters and reset (wired to Redux performance state)
+- Redux Toolkit state management
+- Unit/component tests with Vitest + React Testing Library
+- Responsive dark UI closely matching the supplied sample
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Run
 
-### `npm test`
+```bash
+npm install
+npm run dev
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then open the local Vite URL shown in the terminal.
 
-### `npm run build`
+## Test
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm test
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Production build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run build
+```
 
-### `npm run eject`
+## Academic mapping
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### CO3 — BT3
+Temporal data modeling, event-to-time-slot mapping, calendar views, click interaction and drag-and-drop scheduling.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### CO4 — BT4
+React.memo, useMemo, useCallback, efficient state updates and a render monitor for observing unnecessary work.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### CO5 — BT5
+Vitest + React Testing Library tests for rendering and core UI behavior, providing a foundation for regression testing.
