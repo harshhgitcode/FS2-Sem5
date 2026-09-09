@@ -1,0 +1,499 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: #080b13;
+    color: #e8ecf5;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   MAIN APP
+========================= */
+
+.app {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    padding: 28px 32px 50px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+    margin-bottom: 26px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+.page-header p {
+    max-width: 700px;
+    margin: 10px 0 0;
+    color: #858da0;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+/* =========================
+   PERFORMANCE PANEL
+========================= */
+
+.performance-card {
+    background: #111621;
+    border: 1px solid #252c3b;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+}
+
+.performance-options {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 24px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.option strong {
+    display: block;
+    color: #e8ecf5;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.option span {
+    display: block;
+    color: #737d91;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    flex: 0 0 auto;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #30394b;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 3px;
+    background: #9aa3b5;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.switch input:checked + .slider {
+    background: #435fbd;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(18px);
+    background: #91aaff;
+}
+
+/* =========================
+   PERFORMANCE BOTTOM
+========================= */
+
+.performance-bottom {
+    border-top: 1px solid #202736;
+    margin-top: 18px;
+    padding-top: 17px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reset-button {
+    background: transparent;
+    border: 1px solid #293142;
+    color: #8992a5;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.reset-button:hover {
+    background: #171d2a;
+    color: #d6dbea;
+}
+
+/* =========================
+   MAIN GRID
+========================= */
+
+.main-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 2.2fr)
+        minmax(300px, 0.95fr);
+    gap: 20px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-section,
+.render-monitor {
+    background: #111621;
+    border: 1px solid #252c3b;
+    border-radius: 14px;
+}
+
+.calendar-section {
+    padding: 20px;
+}
+
+.calendar-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 14px;
+}
+
+.calendar-title-row h2,
+.render-monitor h2 {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.8px;
+}
+
+/* =========================
+   CATEGORY LABELS
+========================= */
+
+.category-list {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.category {
+    padding: 5px 9px;
+    border-radius: 15px;
+    font-size: 11px;
+    border: 1px solid;
+}
+
+.meeting {
+    border-color: #394c85;
+    color: #9baeff;
+}
+
+.deadline {
+    border-color: #623e54;
+    color: #e89bb1;
+}
+
+.focus-block,
+.focus {
+    border-color: #28635d;
+    color: #72d3c3;
+}
+
+.personal {
+    border-color: #69572a;
+    color: #d5bb66;
+}
+
+/* =========================
+   WEEK GRID
+========================= */
+
+.calendar {
+    display: grid;
+    grid-template-columns:
+        repeat(7, minmax(85px, 1fr));
+    gap: 9px;
+}
+
+.day-column {
+    min-height: 214px;
+    background: #0c111b;
+    border: 1px dashed #252d3d;
+    border-radius: 10px;
+    padding: 9px;
+    transition: 0.15s;
+}
+
+.day-column:hover {
+    border-color: #39445c;
+}
+
+.day-name {
+    color: #8b94a6;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* =========================
+   EVENT CARDS
+========================= */
+
+.event-card {
+    position: relative;
+    background: #182131;
+    border: 1px solid #263149;
+    border-left: 3px solid #7891ff;
+    border-radius: 7px;
+    padding: 9px 9px 8px;
+    cursor: grab;
+    transition:
+        transform 0.15s,
+        border-color 0.15s;
+}
+
+.event-card:hover {
+    transform: translateY(-1px);
+    border-color: #52638c;
+}
+
+.event-card:active {
+    cursor: grabbing;
+    opacity: 0.75;
+}
+
+.event-card.deadline {
+    border-left-color: #d47a97;
+}
+
+.event-card.focus-block {
+    border-left-color: #3bc5ae;
+}
+
+.event-card.personal {
+    border-left-color: #d5aa38;
+}
+
+.event-time {
+    color: #8d97aa;
+    font-family: monospace;
+    font-size: 10px;
+    margin-bottom: 7px;
+}
+
+.event-title {
+    color: #e9edf6;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.event-footer {
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.event-category {
+    color: #657086;
+    font-size: 9px;
+}
+
+.card-render-count {
+    color: #7688c9;
+    font-size: 9px;
+}
+
+.edit-button {
+    margin-top: 8px;
+    border: 0;
+    border-radius: 5px;
+    background: #29364d;
+    color: #aab4c8;
+    padding: 5px 8px;
+    font-size: 10px;
+}
+
+.edit-button:hover {
+    background: #35445e;
+    color: white;
+}
+
+/* =========================
+   RENDER MONITOR
+========================= */
+
+.render-monitor {
+    padding: 20px;
+}
+
+.render-monitor h2 {
+    margin-bottom: 20px;
+}
+
+.monitor-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.monitor-stats strong {
+    display: block;
+    color: #7793ff;
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 7px;
+}
+
+.monitor-stats span {
+    color: #737d91;
+    font-size: 11px;
+}
+
+/* =========================
+   RENDER BARS
+========================= */
+
+.render-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.render-row {
+    display: grid;
+    grid-template-columns: 92px 1fr 16px;
+    align-items: center;
+    gap: 8px;
+}
+
+.render-row > span {
+    color: #858ea1;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.render-row b {
+    color: #8993a8;
+    font-size: 10px;
+    text-align: right;
+}
+
+.render-bar {
+    height: 5px;
+    background: #202738;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.render-fill {
+    height: 100%;
+    background: #819aff;
+    border-radius: 10px;
+    transition: width 0.25s ease;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .render-monitor {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 760px) {
+    .app {
+        padding: 20px 15px;
+    }
+
+    .performance-options {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .performance-bottom {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .calendar {
+        overflow-x: auto;
+        grid-template-columns:
+            repeat(7, 115px);
+        padding-bottom: 5px;
+    }
+
+    .calendar-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
