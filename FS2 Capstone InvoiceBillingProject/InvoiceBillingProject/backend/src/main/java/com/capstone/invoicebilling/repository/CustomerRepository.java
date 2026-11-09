@@ -1,3 +1,0 @@
-package com.capstone.invoicebilling.repository;
-import com.capstone.invoicebilling.model.Customer; import org.springframework.data.mongodb.repository.MongoRepository; import java.util.List; import java.util.Optional;
-public interface CustomerRepository extends MongoRepository<Customer,String>{ List<Customer> findByUserIdOrderByCreatedAtDesc(String userId); Optional<Customer> findByIdAndUserId(String id,String userId); void deleteByIdAndUserId(String id,String userId); }
